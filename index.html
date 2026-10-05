@@ -1,161 +1,552 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="zh-HK" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover">
   
-  <!-- Google Search Console 驗證碼 -->
-  <meta name="google-site-verification" content="JZ5UohX-CcP_fQV0_DI9VadkKY4ZoTTkUifL88-fIcY" />
-  
-  <title>東淦新員工入職培訓考核及問卷系統 | 東淦工程有限公司 (Jumbo Orient Contracting Limited)</title>
-  
-  <!-- SEO & Author 資訊 -->
-  <meta name="author" content="羅子淇 (Jacky Law)" />
-  <meta name="description" content="東淦工程有限公司 (Jumbo Orient Contracting Limited) 人力資源管理創科系統，提供新員工入職考核、培訓滿意度評估與受控 PDF 自動生成。" />
-  <meta name="keywords" content="東淦工程有限公司, Jumbo Orient Contracting Limited, 羅子淇, Jacky Law, 智慧工地, HR-Tech, ISO 27001, 建造業數碼化, 入職培訓系統, Streamlit" />
-  
-  <!-- Open Graph 社交媒體預覽卡片 -->
-  <meta property="og:title" content="東淦新員工入職培訓考核及問卷系統 | 東淦工程有限公司" />
-  <meta property="og:description" content="HR-Tech 創新項目，落實建造業 ESG 永續管理與零資料滯留資安規範。" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://jo-onboard-quiz.streamlit.app" />
-  <meta property="og:locale" content="zh_HK" />
+  <!-- 🔍 Google Search Console 擁有權驗證 -->
+  <meta name="google-site-verification" content="JZ5UohX-CcP_fQV0_DI9VadkKY4ZoTTkUifL88-fIcY">
 
-  <!-- Schema.org 結構化資料 (助於 Google 知識圖譜收錄企業與作者) -->
+  <!-- 🏢 基礎 SEO 核心標籤：東淦工程創科項目 -->
+  <title>東淦新員工入職培訓考核系統 JO-OAS | 東淦工程有限公司 (Jumbo Orient Contracting Limited)</title>
+  <meta name="description" content="東淦新員工入職培訓考核及問卷系統 (JO-OAS / JO-HR-REC-2026-V1) 是東淦工程有限公司（Jumbo Orient Contracting Limited）自主研發之智慧工地與綠色無紙化培訓合規引擎。落實 ISO 9001、ISO 14001、ISO 45001 及 ISO/IEC 27001 受控管理標準，具備全自動後端 SMTP 加密提交與零資料滯留 (Privacy-by-Design) 特性。">
+  <meta name="keywords" content="東淦工程, 東淦工程有限公司, Jumbo Orient, Jumbo Orient Contracting Limited, 羅子淇, Jacky Law, JO-OAS, jo-onboarding-quiz, 智慧工地, 建造業數碼化, HR-Tech, ESG, 入職培訓系統, 企業管治, ISO 27001, 香港私隱條例 Cap 486">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://jackylawck.github.io/JO-Onboarding-Quiz/">
+
+  <!-- 👤 作者資訊 -->
+  <meta name="author" content="羅子淇 (Jacky Law)">
+  <meta property="article:author" content="羅子淇 (Jacky Law)">
+
+  <!-- 🌐 Open Graph / LinkedIn / Facebook 社交卡片 -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jackylawck.github.io/JO-Onboarding-Quiz/">
+  <meta property="og:title" content="東淦新員工入職培訓考核系統 (JO-OAS) | 東淦工程有限公司創科項目">
+  <meta property="og:description" content="零額外授權成本、後端全自動加密發信與受控 PDF 即時生成。東淦工程推動營造業智慧培訓與 ESG 治理新標竿。">
+  <meta property="og:image" content="https://www.jumboorient.com.hk/assets/jumbo-orient-og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="東淦新員工入職培訓考核系統 JO-OAS 架構全景圖">
+  <meta property="og:locale" content="zh_HK">
+  <meta property="og:site_name" content="東淦工程有限公司 Jumbo Orient Contracting Limited">
+
+  <!-- 🐦 Twitter / X Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="JO-OAS: 東淦新員工入職培訓考核系統 | 東淦工程有限公司">
+  <meta name="twitter:description" content="全自動後端 SMTP 提交之受控培訓考核系統，落實香港私隱條例 Cap. 486、ISO 國際管理體系與綠色無紙化治理。">
+  <meta name="twitter:image" content="https://www.jumboorient.com.hk/assets/jumbo-orient-og-banner.png">
+
+  <!-- 📱 PWA 與行動端原生適配 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="東淦培訓考核">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0b192c">
+  <meta name="application-name" content="JO-OAS 東淦新員工入職培訓考核系統">
+
+  <!-- 🛡️ 企業級資安防禦策略：Content Security Policy (CSP) 與權限控制 -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data: https://img.shields.io https://static.streamlit.io https://www.jumboorient.com.hk;
+    font-src 'self' data:;
+    connect-src 'self';
+    media-src 'none';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'none';
+    frame-ancestors 'none';
+  ">
+  <meta http-equiv="Permissions-Policy" content="accelerometer=(), gyroscope=(), microphone=(), camera=(), geolocation=(), payment=()">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- 🏷️ Schema.org 結構化資料 (後端精準關聯：企業法人 + 作者 Person + 應用程式) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "東淦新員工入職培訓考核及問卷系統",
-    "operatingSystem": "Web",
-    "applicationCategory": "BusinessApplication",
-    "description": "東淦工程有限公司智慧工地新員工培訓、考核及合規文件導出系統",
-    "url": "https://jo-onboard-quiz.streamlit.app",
-    "author": {
-      "@type": "Person",
-      "name": "羅子淇 (Jacky Law)",
-      "url": "https://github.com/jackylawck"
-    },
-    "provider": {
-      "@type": "Organization",
-      "name": "東淦工程有限公司 (Jumbo Orient Contracting Limited)",
-      "url": "https://www.jumboorient.com.hk/"
-    }
+    "@graph": [
+      {
+        "@type": "Corporation",
+        "@id": "https://www.jumboorient.com.hk/#organization",
+        "name": "東淦工程有限公司",
+        "alternateName": "Jumbo Orient Contracting Limited",
+        "url": "https://www.jumboorient.com.hk/",
+        "logo": "https://www.jumboorient.com.hk/assets/logo.png",
+        "description": "東淦工程有限公司專注於高標準工程營造與營建工程服務，致力於推動智慧建造技術、數位轉型與企業高標準誠信管治。",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Hong Kong",
+          "addressCountry": "HK"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://github.com/jackylawck/#author",
+        "name": "羅子淇 (Jacky Law)",
+        "jobTitle": "Senior HR Manager & Corporate Governance Advisor",
+        "worksFor": {
+          "@id": "https://www.jumboorient.com.hk/#organization"
+        },
+        "url": "https://github.com/jackylawck"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://jackylawck.github.io/JO-Onboarding-Quiz/#software",
+        "name": "JO-OAS: 東淦新員工入職培訓考核及問卷系統",
+        "alternateName": "Jumbo Orient Onboarding Assessment System (Document ID: JO-HR-REC-2026-V1)",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web Browser, iOS, Android",
+        "url": "https://jo-onboard-quiz.streamlit.app",
+        "author": {
+          "@id": "https://github.com/jackylawck/#author"
+        },
+        "publisher": {
+          "@id": "https://www.jumboorient.com.hk/#organization"
+        },
+        "description": "企業級零資料滯留入職考核與問卷系統，具備受控 PDF 自動生成與後端 M365 SMTP 加密提交，全面落實 ISO 與香港私隱條例規範。"
+      }
+    ]
   }
   </script>
 
   <style>
     :root {
-      --primary: #0056b3;
-      --accent: #28a745;
-      --bg: #f8f9fa;
-      --text: #212529;
+      --primary: #0078d4;
+      --primary-dark: #004578;
+      --bg-dark: #070f1e;
+      --card-bg: rgba(16, 29, 51, 0.75);
+      --card-border: rgba(0, 120, 212, 0.28);
+      --accent: #107c41;
+      --accent-purple: #8764b8;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang HK", "Microsoft JhengHei", sans-serif;
     }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", Arial, sans-serif;
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: var(--bg);
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(0, 120, 212, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(16, 124, 65, 0.12) 0px, transparent 50%);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 24px 16px;
       min-height: 100vh;
-      align-items: center;
-      justify-content: center;
     }
+
     .container {
-      max-width: 720px;
-      margin: 24px;
-      padding: 36px;
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    header {
       text-align: center;
+      padding: 40px 16px 28px;
     }
+
+    .corp-badge {
+      display: inline-block;
+      background: rgba(0, 120, 212, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      padding: 4px 14px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
     h1 {
-      font-size: 1.6rem;
-      color: var(--primary);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #ffffff;
       margin-bottom: 8px;
+      letter-spacing: -0.02em;
     }
-    h2 {
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: #6c757d;
-      margin-top: 0;
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
       margin-bottom: 20px;
     }
-    p {
-      line-height: 1.6;
-      font-size: 0.95rem;
-      color: #495057;
-      text-align: justify;
+
+    .badge-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 24px;
     }
-    .meta-box {
-      background: #f1f3f5;
-      padding: 14px;
-      border-radius: 8px;
-      margin: 20px 0;
-      font-size: 0.9rem;
+
+    .badge-bar img {
+      height: 22px;
+    }
+
+    .tagline-box {
+      background: var(--card-bg);
+      border-left: 4px solid var(--primary);
+      border-radius: 4px;
+      padding: 16px 20px;
+      max-width: 820px;
+      margin: 0 auto 36px;
       text-align: left;
+      font-size: 0.98rem;
     }
+
+    .tagline-box strong {
+      color: #93c5fd;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 28px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      color: #ffffff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    p {
+      color: #d1d5db;
+      font-size: 0.96rem;
+      margin-bottom: 14px;
+    }
+
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .flow-node {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 16px;
+      position: relative;
+    }
+
+    .flow-node.active {
+      border-color: rgba(0, 120, 212, 0.6);
+      background: rgba(0, 120, 212, 0.08);
+    }
+
+    .flow-step {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #60a5fa;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .flow-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .flow-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 0;
+    }
+
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin-top: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    th {
+      background: rgba(0, 120, 212, 0.2);
+      color: #93c5fd;
+      padding: 12px 14px;
+      font-weight: 600;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #d1d5db;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .role-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .tech-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .tech-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .tech-item h3 {
+      font-size: 0.95rem;
+      color: #60a5fa;
+      margin-bottom: 8px;
+    }
+
+    .tech-item p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
     .btn-group {
-      margin-top: 24px;
+      margin: 24px 0 10px;
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       justify-content: center;
     }
+
     .btn {
       display: inline-block;
-      padding: 12px 24px;
+      padding: 11px 22px;
       border-radius: 6px;
-      font-weight: bold;
+      font-weight: 600;
       text-decoration: none;
-      transition: background-color 0.2s ease;
-      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      font-size: 0.92rem;
     }
+
     .btn-primary {
       background-color: var(--primary);
       color: #ffffff;
     }
+
     .btn-primary:hover {
-      background-color: #004085;
+      background-color: var(--primary-dark);
     }
+
     .btn-secondary {
-      background-color: #e9ecef;
-      color: #343a40;
+      background-color: rgba(255, 255, 255, 0.08);
+      color: #e5e7eb;
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
+
     .btn-secondary:hover {
-      background-color: #dee2e6;
+      background-color: rgba(255, 255, 255, 0.15);
     }
+
     footer {
-      margin-top: 24px;
-      font-size: 0.8rem;
-      color: #868e96;
+      text-align: center;
+      padding: 30px 16px 20px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 1.6rem; }
+      .card { padding: 18px; }
+      body { padding: 16px 10px; }
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>東淦新員工入職培訓考核及問卷系統</h1>
-    <h2>東淦工程有限公司創科項目</h2>
+    <header>
+      <div class="corp-badge">東淦工程有限公司・創科項目</div>
+      <h1>JO-OAS: 東淦新員工入職培訓考核系統</h1>
+      <div class="subtitle">Jumbo Orient Onboarding Assessment & Feedback System (JO-HR-REC-2026-V1)</div>
+      
+      <div class="badge-bar">
+        <a href="https://jo-onboard-quiz.streamlit.app" target="_blank" rel="noopener">
+          <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Streamlit App">
+        </a>
+        <a href="https://github.com/jackylawck/JO-Onboarding-Quiz" target="_blank" rel="noopener">
+          <img src="https://img.shields.io/badge/Repository-JO--Onboarding--Quiz-0078D4.svg" alt="JO-Onboarding-Quiz Repository">
+        </a>
+        <a href="https://www.jumboorient.com.hk" target="_blank" rel="noopener">
+          <img src="https://img.shields.io/badge/Organization-Jumbo%20Orient-blue.svg" alt="Jumbo Orient Contracting Limited">
+        </a>
+        <img src="https://img.shields.io/badge/Privacy-HK%20PDPO%20Cap.%20486-brightgreen.svg" alt="HK PDPO Cap. 486">
+        <img src="https://img.shields.io/badge/Compliance-ISO%2027001%20%7C%20IMS-green.svg" alt="ISO Compliance">
+      </div>
 
-    <p>
-      本系統為東淦工程有限公司推動建築工程數碼化與智慧工地管治之內部創新應用，整合入職安全培訓、規章考核、意見回饋與受控 PDF 報告自動生成（文件編號：<code>JO-HR-REC-2026-V1</code>），落實無紙化綠色辦公 (ESG) 與香港《個人資料（私隱）條例》(Cap. 486) / ISO 27001 資安標準。
-    </p>
+      <div class="tagline-box">
+        <strong>"Zero-Data-Retention, Automated Compliant Onboarding & ESG Workforce Engine"</strong><br>
+        「零資料滯留、受控 PDF 即時生成與全自動後端加密提交之企業級 HR-Tech 培訓合規引擎」
+      </div>
 
-    <div class="meta-box">
-      <strong>所屬機構：</strong>東淦工程有限公司 (Jumbo Orient Contracting Limited)<br>
-      <strong>核心架構：</strong>Python / Streamlit / M365 SMTP Automated Pipeline<br>
-      <strong>系統狀態：</strong>正式運行中 (Production)
-    </div>
+      <div class="btn-group">
+        <a class="btn btn-primary" href="https://jo-onboard-quiz.streamlit.app" target="_blank" rel="noopener">進入系統 (Streamlit App)</a>
+        <a class="btn btn-secondary" href="https://www.jumboorient.com.hk/" target="_blank" rel="noopener">東淦工程官方網站</a>
+        <a class="btn btn-secondary" href="https://github.com/jackylawck/JO-Onboarding-Quiz" target="_blank" rel="noopener">GitHub 項目源碼</a>
+      </div>
+    </header>
 
-    <div class="btn-group">
-      <a class="btn btn-primary" href="https://jo-onboard-quiz.streamlit.app" target="_blank">進入正式系統 (Streamlit)</a>
-      <a class="btn btn-secondary" href="https://www.jumboorient.com.hk/" target="_blank">東淦工程官方網站</a>
-      <a class="btn btn-secondary" href="https://github.com/jackylawck/JO-Onboarding-Quiz" target="_blank">GitHub 項目源碼</a>
-    </div>
+    <main>
+      <!-- 專案摘要 -->
+      <section class="card">
+        <h2>📌 專案摘要 (Executive Summary)</h2>
+        <p><strong>東淦新員工入職培訓考核及問卷系統 (JO-OAS)</strong> 是東淦工程有限公司（Jumbo Orient Contracting Limited）落實智慧工地管治與人力資源數位化自主研發之無紙化解決方案。</p>
+        <p>系統由 <strong>羅子淇 (Jacky Law)</strong> 規劃主導，將傳統紙本考核與問卷全面轉型為雲端原生 Web 應用。結合動態防弊門禁、題庫隔離保護、香港標準時間 (HKT) 向量 PDF 生成與 Python SMTP 後端傳輸，在<strong>無需依賴昂貴第三方雲端資料庫授權</strong>的前提下，直接達成「即時測驗 ➔ 自動評分 ➔ 滿意度採樣 ➔ 一鍵加密直送 HR 信箱」之端對端閉環。</p>
+      </section>
+
+      <!-- 治理閉環架構 -->
+      <section class="card">
+        <h2>🏛️ 流程生命週期與治理閉環 (Workflow Lifecycle)</h2>
+        <p>為杜絕傳統紙本測驗「批改滯後、檔案易損毀、審計追蹤斷裂」等痛點，JO-OAS 建立標準四部曲受控管理機制：</p>
+        
+        <div class="flow-grid">
+          <div class="flow-node">
+            <div class="flow-step">第一階段・驗證</div>
+            <div class="flow-title">安全門禁通行</div>
+            <div class="flow-desc">透過後端 Secrets 比對通行金鑰，阻斷未經授權之外界存取。</div>
+          </div>
+          <div class="flow-node">
+            <div class="flow-step">第二階段・考核</div>
+            <div class="flow-title">培訓知識測驗</div>
+            <div class="flow-desc">評估規章制度與品質目標，提交即時計算得分與 75% 合格基準。</div>
+          </div>
+          <div class="flow-node">
+            <div class="flow-step">第三階段・調研</div>
+            <div class="flow-title">ESG 與滿意度評估</div>
+            <div class="flow-desc">收集 1–5 分培訓滿意度、文康/義工活動偏好與開放式建設意見。</div>
+          </div>
+          <div class="flow-node active">
+            <div class="flow-step">第四階段・閉環</div>
+            <div class="flow-title">受控生成與加密發送</div>
+            <div class="flow-desc">動態合成受控 PDF (JO-HR-REC-2026-V1)，TLS 直送 HR 信箱歸檔。</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 業務對照矩陣 -->
+      <section class="card">
+        <h2>📋 業務受控標準對照表 (Governance Matrix)</h2>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>階段</th>
+                <th>責任角色</th>
+                <th>系統實作機制</th>
+                <th>合規與審計依據</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>門禁核對</strong></td>
+                <td><span class="role-badge">新入職員工</span></td>
+                <td>Secrets 安全隔離金鑰驗證</td>
+                <td>零信任存取控制與防作弊機制</td>
+              </tr>
+              <tr>
+                <td><strong>第一部分：知識考核</strong></td>
+                <td><span class="role-badge">新入職員工</span></td>
+                <td>規章與品質目標題庫動態評分</td>
+                <td>ISO 9001:2015 培訓成效驗收條款</td>
+              </tr>
+              <tr>
+                <td><strong>第二部分：問卷調研</strong></td>
+                <td><span class="role-badge">新入職員工</span></td>
+                <td>滿意度評估與文康活動需求收集</td>
+                <td>ISO 45001 職業健康及 ESG 員工關懷指標</td>
+              </tr>
+              <tr>
+                <td><strong>第三部分：加密送出</strong></td>
+                <td><span class="role-badge">後端自動化</span></td>
+                <td>Python SMTP (STARTTLS / Port 587)</td>
+                <td>ISO/IEC 27001 傳輸加密與存取受限原則</td>
+              </tr>
+              <tr>
+                <td><strong>受控檔案生成</strong></td>
+                <td><span class="role-badge">系統引擎</span></td>
+                <td>生成標準 PDF (<code>JO-HR-REC-2026-V1</code>)</td>
+                <td>香港《個人資料（私隱）條例》(Cap. 486) 聲明嵌入</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 技術亮點 -->
+      <section class="card">
+        <h2>⚙️ 技術亮點與資安架構 (Technical Implementation)</h2>
+        <div class="tech-list">
+          <div class="tech-item">
+            <h3>1. 零資料滯留 (Privacy-by-Design)</h3>
+            <p>PDF 報告純於伺服器記憶體中動態生成，完成郵件傳輸即自 RAM 釋放，無持久化資料殘留風險。</p>
+          </div>
+          <div class="tech-item">
+            <h3>2. 機密題庫後端隔離</h3>
+            <p>題目與正確答案均嚴格封裝於 Streamlit Secrets，前端程式碼不暴露任何標準答案與敏感密鑰。</p>
+          </div>
+          <div class="tech-item">
+            <h3>3. 後端 SMTP 全自動寄送</h3>
+            <p>直連企業 Microsoft 365 郵件伺服器，員工一鍵完成寄送並附帶受控 PDF，無需開啟本機郵件軟體。</p>
+          </div>
+          <div class="tech-item">
+            <h3>4. 香港標準時間 (HKT) 存證</h3>
+            <p>全面校準 Asia/Hong_Kong (UTC+8) 時間戳記，產出標準化受控紀錄，滿足法定管理審計規範。</p>
+          </div>
+        </div>
+      </section>
+    </main>
 
   </div>
 
